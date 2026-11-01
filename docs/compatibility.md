@@ -51,7 +51,7 @@ python3 scripts/install.py --agent generic --dest /path/to/profile/skills
 
 ## Generic agents (chat-only or no skill folder)
 
-If the agent cannot install skills, attach or paste the relevant `SKILL.md` and the templates/references it links to, and say "follow this skill for this session". This is **session-only** use: nothing persists, and the agent may need reminding in long conversations. No native skill folder is assumed for such agents, including GrokBot-style chat agents.
+If the agent cannot install skills, attach or paste the relevant `SKILL.md` and the templates/references it links to, and say "follow this skill for this session". This is **session-only** use: nothing persists, and the agent may need reminding in long conversations. No native skill folder is assumed for chat-only agents.
 
 For an offline copy anywhere:
 

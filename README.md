@@ -9,6 +9,10 @@ Works with Claude Code, Codex, Hermes, or any agent that can read Markdown files
 
 **See it first:** open [examples/reading-list/](examples/reading-list/README.md) — a synthetic before/after walk-through with a full review, three directions, a comparison page and a working prototype.
 
+| Before | Comparison | Prototype |
+| --- | --- | --- |
+| ![Before: the original single-list Library screen with no search, filters or status grouping](docs/images/example-before.png) | ![Comparison page weighing three directions (Sections, Next up, Board) against the user's complaint](docs/images/example-comparison.png) | ![Working prototype of direction A with search, status filters and Continue reading / This week / Last week sections](docs/images/example-prototype.png) |
+
 ## Quick start
 
 Paste this into your agent from inside the project you want to improve:
@@ -28,7 +32,7 @@ Please acquire the design skills from https://github.com/jamesonedge/design-agen
 
 That is all you need. The agent handles the rest; you never have to understand the internals.
 
-Hermes has no project-scope skill folder, so the default there is session-only use, or a project-local folder you agree with the agent. Installing into the active Hermes profile or your user folder is global and needs your explicit choice. Chat-only agents (GrokBot-style) have no assumed skill folder; they read the files for the session. Details in [docs/compatibility.md](docs/compatibility.md).
+Hermes has no project-scope skill folder, so the default there is session-only use, or a project-local folder you agree with the agent. Installing into the active Hermes profile or your user folder is global and needs your explicit choice. Chat-only agents (no skill folder) read the files for the session instead. Details in [docs/compatibility.md](docs/compatibility.md).
 
 ## Which skill do I want?
 
