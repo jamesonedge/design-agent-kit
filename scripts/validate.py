@@ -282,6 +282,12 @@ def validate(root):
                 errors.append("%s: only .md and .html files are allowed in skills/" % rel)
             if os.stat(full).st_mode & (stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH):
                 errors.append("%s: executable files are not allowed in skills/" % rel)
+        if rel.endswith(".png") and not rel.startswith("skills/"):
+            # Documentation screenshots: must be real PNG files; no text checks apply.
+            with open(full, "rb") as fh:
+                if fh.read(8) != b"\x89PNG\r\n\x1a\n":
+                    errors.append("%s: not a valid PNG file" % rel)
+            continue
         try:
             with open(full, encoding="utf-8") as fh:
                 text = fh.read()

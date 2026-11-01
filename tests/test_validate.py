@@ -65,6 +65,16 @@ class ValidateTests(unittest.TestCase):
         self.assertEqual(code, 0, out.getvalue())
         self.assertIn("not comprehensive", out.getvalue())
 
+    def test_fake_png_rejected(self):
+        with open(self.path("docs/images/fake.png"), "wb") as fh:
+            fh.write(b"not a png")
+        self.assert_error("not a valid PNG file")
+
+    def test_png_in_skills_rejected(self):
+        shutil.copy(self.path("docs/images/example-before.png"),
+                    self.path("skills/interactive-mockup/x.png"))
+        self.assert_error("only .md and .html files are allowed in skills/")
+
     def test_missing_doc(self):
         os.remove(self.path("docs/security.md"))
         self.assert_error("docs.security missing")
