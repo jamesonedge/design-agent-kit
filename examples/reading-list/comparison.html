@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Library — direction comparison</title>
+<style>
+  :root { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #1c1b19; background: #f6f5f1; }
+  body { margin: 0; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .card { background: #fff; border: 1px solid #dcd8ce; border-radius: 12px; padding: 16px; }
+  .card h2 { margin-top: 0; }
+  table { width: 100%; border-collapse: collapse; margin-top: 24px; background: #fff; }
+  caption { text-align: left; font-weight: 600; padding: 8px 0; }
+  th, td { text-align: left; padding: 8px; border-bottom: 1px solid #dcd8ce; vertical-align: top; }
+  a { color: #2b5c8a; }
+  a:focus-visible { outline: 3px solid #2b5c8a; outline-offset: 2px; }
+  .note { background: #fbefc9; padding: 8px 12px; border-radius: 8px; }
+  .wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Library: choose a direction</h1>
+  <p class="note">Illustrative synthetic example. All three directions use the same task, constraints, tokens and synthetic data. Production mode: <strong>serial, one agent</strong> (not independent designers).</p>
+  <div class="grid">
+    <article class="card"><h2><a href="directions/a-sections.html">A — Sections</a></h2><p>Keep the single list; add search, status filters and "Continue reading / This week / Last week / Earlier" headings.</p></article>
+    <article class="card"><h2><a href="directions/b-next-up.html">B — Next up</a></h2><p>Answer "what should I read now?" with one recommended item for the time available; the full list moves behind a link.</p></article>
+    <article class="card"><h2><a href="directions/c-board.html">C — Board</a></h2><p>Three status columns (To read, Reading, Done) with explicit "Move" buttons; columns scroll sideways on phones.</p></article>
+  </div>
+  <div class="wrap">
+  <table>
+    <caption>Trade-offs against the complaint: "I can never find what I saved last week, and I can't tell what I'm halfway through."</caption>
+    <thead><tr><th scope="col">Question</th><th scope="col">A — Sections</th><th scope="col">B — Next up</th><th scope="col">C — Board</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Optimises for</th><td>Recall by time and status in one scan</td><td>Deciding quickly what to read next</td><td>Seeing and changing status</td></tr>
+      <tr><th scope="row">Sacrifices</th><td>No guidance on what to pick</td><td>Finding a specific saved item (one tap further away)</td><td>Date recall; long titles on narrow screens</td></tr>
+      <tr><th scope="row">"Last week"</th><td>Direct heading</td><td>Only via the full list</td><td>Text label on each card</td></tr>
+      <tr><th scope="row">"Halfway through"</th><td>Top section</td><td>Hero item</td><td>Reading column</td></tr>
+      <tr><th scope="row">Change from current screen</th><td>Small; reuses the existing row</td><td>Large; new primary surface</td><td>Large; horizontal layout</td></tr>
+      <tr><th scope="row">Main risk</th><td>Sections feel long with hundreds of items</td><td>Recommendation logic needs data the app does not have</td><td>Sideways scrolling hides two-thirds of the board on phones</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><strong>Choice for this example:</strong> A, made by the product-owner role in the synthetic scenario because it answers both halves of the complaint with the smallest change. It is now built as <a href="prototype.html">prototype.html</a>; graft changes are listed in <a href="change-ledger.md">change-ledger.md</a>.</p>
+</main>
+</body>
+</html>

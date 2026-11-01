@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Library — Direction A prototype</title>
+<style>
+  /* Preserved from directions/a-sections.html (strict graft). */
+  :root {
+    --color-bg: #f6f5f1; --color-surface: #ffffff; --color-text-primary: #1c1b19; --color-text-secondary: #5e5a52;
+    --color-border: #dcd8ce; --color-accent: #2b5c8a; --color-accent-contrast: #ffffff; --color-success: #2f6b3a;
+    --color-progress: #7a4f00; --color-highlight: #fbefc9;
+    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-size-title: 1.5rem; --font-size-meta: 0.875rem; --font-weight-strong: 600;
+    --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px;
+    --radius-card: 12px; --radius-chip: 999px; --motion-fast: 120ms; --motion-standard: 200ms;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-family); background: var(--color-bg); color: var(--color-text-primary); line-height: 1.4; }
+  .banner { margin: 0; background: var(--color-highlight); padding: var(--space-2) var(--space-4); font-size: var(--font-size-meta); }
+  .app { max-width: 720px; margin: 0 auto; padding: var(--space-4); }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); }
+  h1 { font-size: var(--font-size-title); margin: 0; }
+  .btn { font: inherit; border-radius: var(--radius-chip); padding: var(--space-2) var(--space-4); border: 1px solid var(--color-accent); cursor: pointer; min-height: 44px; }
+  .btn-primary { background: var(--color-accent); color: var(--color-accent-contrast); }
+  .btn-quiet { background: var(--color-surface); color: var(--color-accent); }
+  .search { width: 100%; margin-top: var(--space-4); padding: var(--space-3); font: inherit; border: 1px solid var(--color-border); border-radius: var(--radius-card); background: var(--color-surface); }
+  .filters { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin: var(--space-3) 0; }
+  .chip { font: inherit; font-size: var(--font-size-meta); border: 1px solid var(--color-border); background: var(--color-surface); border-radius: var(--radius-chip); padding: var(--space-1) var(--space-3); min-height: 44px; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--color-accent); color: var(--color-accent-contrast); border-color: var(--color-accent); }
+  .count { margin-left: auto; color: var(--color-text-secondary); font-size: var(--font-size-meta); }
+  .section-title { font-size: var(--font-size-meta); font-weight: var(--font-weight-strong); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin: var(--space-6) 0 var(--space-2); }
+  .list { list-style: none; margin: 0; padding: 0; }
+  .row { width: 100%; text-align: left; font: inherit; color: inherit; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: var(--space-3); margin-bottom: var(--space-2); display: grid; grid-template-columns: 1fr auto; gap: var(--space-1) var(--space-3); cursor: pointer; }
+  .row-title { font-weight: var(--font-weight-strong); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .row-meta { grid-column: 1; color: var(--color-text-secondary); font-size: var(--font-size-meta); }
+  .badge { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-size: var(--font-size-meta); border-radius: var(--radius-chip); padding: 2px var(--space-2); border: 1px solid currentColor; white-space: nowrap; }
+  .badge-unread { color: var(--color-accent); } .badge-reading { color: var(--color-progress); } .badge-done { color: var(--color-success); }
+  :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  /* Added for the prototype (see change-ledger.md). Namespaced with .pt- */
+  :root { --color-danger: #a1312b; }
+  .pt-type { font: inherit; font-size: var(--font-size-meta); min-height: 44px; border: 1px solid var(--color-border); border-radius: var(--radius-chip); background: var(--color-surface); padding: var(--space-1) var(--space-3); }
+  .pt-demo { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; font-size: var(--font-size-meta); color: var(--color-text-secondary); margin-top: var(--space-2); }
+  .pt-demo select { font: inherit; min-height: 44px; }
+  .pt-state { background: var(--color-surface); border: 1px dashed var(--color-border); border-radius: var(--radius-card); padding: var(--space-6) var(--space-4); text-align: center; margin-top: var(--space-6); }
+  .pt-state p { margin: 0 0 var(--space-3); }
+  .pt-state.pt-error { border-style: solid; border-color: var(--color-danger); }
+  .pt-dialog { border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: var(--space-4); width: min(520px, calc(100vw - 2 * var(--space-4))); color: var(--color-text-primary); background: var(--color-surface); }
+  .pt-dialog::backdrop { background: rgba(28, 27, 25, 0.4); }
+  .pt-dialog h2 { margin: 0 0 var(--space-2); font-size: 1.25rem; overflow-wrap: anywhere; }
+  .pt-dialog dl { display: grid; grid-template-columns: auto 1fr; gap: var(--space-1) var(--space-3); margin: 0 0 var(--space-4); font-size: var(--font-size-meta); }
+  .pt-dialog dt { color: var(--color-text-secondary); }
+  .pt-dialog dd { margin: 0; }
+  .pt-dialog fieldset { border: 1px solid var(--color-border); border-radius: var(--radius-card); margin: 0 0 var(--space-4); }
+  .pt-dialog label { display: block; margin-bottom: var(--space-3); }
+  .pt-dialog input[type="text"], .pt-dialog input[type="url"], .pt-dialog select { display: block; width: 100%; margin-top: var(--space-1); padding: var(--space-2); min-height: 44px; font: inherit; border: 1px solid var(--color-border); border-radius: 8px; }
+  .pt-dialog fieldset label { display: inline-flex; gap: var(--space-1); margin-right: var(--space-3); align-items: center; min-height: 44px; }
+  .pt-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: flex-end; }
+  .pt-danger { color: var(--color-danger); border-color: var(--color-danger); background: var(--color-surface); }
+  .pt-field-error { color: var(--color-danger); font-size: var(--font-size-meta); display: block; margin-top: var(--space-1); }
+  .pt-field-error:empty { display: none; }
+  [aria-invalid="true"] { border-color: var(--color-danger) !important; }
+  .pt-toast { position: fixed; left: 50%; bottom: var(--space-4); transform: translateX(-50%); background: var(--color-text-primary); color: var(--color-surface); border-radius: var(--radius-card); padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4); display: flex; gap: var(--space-3); align-items: center; max-width: calc(100vw - 2 * var(--space-4)); }
+  .pt-toast[hidden] { display: none; }
+  .pt-toast .btn { min-height: 44px; padding: var(--space-1) var(--space-3); background: transparent; color: var(--color-surface); border-color: var(--color-surface); }
+  .pt-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  /* Detail: bottom sheet on phones, right-side panel from 768 px. Add stays a centred dialog. */
+  .pt-dialog.pt-side { margin: auto 0 0; width: 100%; max-width: 100%; max-height: 85vh; overflow-y: auto; border-width: 1px 0 0; border-radius: var(--radius-card) var(--radius-card) 0 0; padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px)); }
+  @media (min-width: 768px) { .pt-dialog.pt-side { margin: 0 0 0 auto; width: min(400px, 100vw); height: 100%; max-height: 100%; border-width: 0 0 0 1px; border-radius: 0; padding-bottom: var(--space-4); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .pt-dialog[open] { animation: pt-in var(--motion-standard) ease-out; }
+    .pt-dialog.pt-side[open] { animation-name: pt-sheet-in; }
+  }
+  @media (prefers-reduced-motion: no-preference) and (min-width: 768px) { .pt-dialog.pt-side[open] { animation-name: pt-side-in; } }
+  @keyframes pt-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes pt-sheet-in { from { transform: translateY(100%); } to { transform: none; } }
+  @keyframes pt-side-in { from { transform: translateX(100%); } to { transform: none; } }
+</style>
+</head>
+<body>
+<p class="banner" role="note">Direction A — interactive prototype. All data is synthetic. Changes are kept in this page only and reset on reload.</p>
+<div class="app">
+  <div class="top">
+    <h1>Library</h1>
+    <button class="btn btn-primary" type="button" id="add-open">Add item</button>
+  </div>
+  <input id="q" class="search" type="search" placeholder="Search title or source" aria-label="Search title or source">
+  <div class="filters" role="group" aria-label="Filter by status">
+    <button class="chip" type="button" aria-pressed="false" data-status="unread">To read</button>
+    <button class="chip" type="button" aria-pressed="false" data-status="reading">Reading</button>
+    <button class="chip" type="button" aria-pressed="false" data-status="done">Done</button>
+    <label class="pt-sr" for="type">Type</label>
+    <select id="type" class="pt-type">
+      <option value="">All types</option><option value="article">Articles</option><option value="book">Books</option>
+      <option value="video">Videos</option><option value="paper">Papers</option>
+    </select>
+    <span class="count" id="count" aria-live="polite">12 items</span>
+  </div>
+  <div class="pt-demo">
+    <label for="demo">Demo data state (prototype only):</label>
+    <select id="demo">
+      <option value="fixture">Synthetic fixture (12 items)</option>
+      <option value="empty">Empty library</option>
+      <option value="error">Load error</option>
+    </select>
+  </div>
+  <div id="list"></div>
+</div>
+
+<dialog class="pt-dialog pt-side" id="detail" aria-labelledby="d-title">
+  <h2 id="d-title" tabindex="-1"></h2>
+  <dl>
+    <dt>Source</dt><dd id="d-source"></dd>
+    <dt>Type</dt><dd id="d-type"></dd>
+    <dt>Added</dt><dd id="d-added"></dd>
+    <dt>Length</dt><dd id="d-minutes"></dd>
+  </dl>
+  <fieldset>
+    <legend>Status</legend>
+    <label><input type="radio" name="d-status" value="unread"> To read</label>
+    <label><input type="radio" name="d-status" value="reading"> Reading</label>
+    <label><input type="radio" name="d-status" value="done"> Done</label>
+  </fieldset>
+  <div class="pt-actions">
+    <button class="btn btn-quiet pt-danger" type="button" id="d-remove">Remove</button>
+    <button class="btn btn-quiet" type="button" id="d-read">Mark as read</button>
+    <button class="btn btn-primary" type="button" id="d-close">Close</button>
+  </div>
+</dialog>
+
+<dialog class="pt-dialog" id="add" aria-labelledby="a-title">
+  <form id="add-form" novalidate>
+    <h2 id="a-title">Add item</h2>
+    <label>Title
+      <input type="text" id="a-name" aria-describedby="a-name-err">
+      <span class="pt-field-error" id="a-name-err"></span>
+    </label>
+    <label>Web address
+      <input type="url" id="a-url" placeholder="https://" aria-describedby="a-url-err">
+      <span class="pt-field-error" id="a-url-err"></span>
+    </label>
+    <label>Type
+      <select id="a-type"><option value="article">Article</option><option value="book">Book</option><option value="video">Video</option><option value="paper">Paper</option></select>
+    </label>
+    <div class="pt-actions">
+      <button class="btn btn-quiet" type="button" id="a-cancel">Cancel</button>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="pt-toast" id="toast" role="status" hidden><span id="toast-text"></span><button class="btn" type="button" id="undo">Undo</button></div>
+
+<script>
+// Synthetic data copied from fixture.json so the page works from a local file.
+const TODAY = "2026-10-30";
+const FIXTURE = [
+  {id:"r1",title:"Designing calm notifications",source:"Interface Weekly",type:"article",status:"unread",added:"2026-10-29",minutes:8},
+  {id:"r2",title:"A field guide to offline-first sync",source:"Northwind Engineering Blog",type:"article",status:"reading",added:"2026-10-27",minutes:22},
+  {id:"r3",title:"The patient gardener",source:"Harbour Press",type:"book",status:"reading",added:"2026-10-12",minutes:340},
+  {id:"r4",title:"Why forms fail on small screens",source:"Interface Weekly",type:"article",status:"unread",added:"2026-10-24",minutes:11},
+  {id:"r5",title:"Budgeting for a first flat: a practical walkthrough with worked examples for every monthly bill",source:"Kettle & Coin",type:"article",status:"unread",added:"2026-10-23",minutes:15},
+  {id:"r6",title:"Typography at reading distance",source:"Type Notes",type:"video",status:"unread",added:"2026-10-21",minutes:18},
+  {id:"r7",title:"Measuring what matters in small teams",source:"Orchard Review",type:"article",status:"done",added:"2026-10-15",minutes:9},
+  {id:"r8",title:"Slow bread",source:"Harbour Press",type:"book",status:"unread",added:"2026-10-09",minutes:260},
+  {id:"r9",title:"Queues, caches and the cost of waiting",source:"Northwind Engineering Blog",type:"article",status:"unread",added:"2026-10-06",minutes:14},
+  {id:"r10",title:"Writing release notes people read",source:"Orchard Review",type:"article",status:"done",added:"2026-10-02",minutes:6},
+  {id:"r11",title:"Colour is not a status",source:"Type Notes",type:"video",status:"unread",added:"2026-09-28",minutes:12},
+  {id:"r12",title:"An introduction to tidal energy",source:"Coastline Science",type:"paper",status:"unread",added:"2026-09-19",minutes:35}
+];
+const LABEL = {unread: "To read", reading: "Reading", done: "Done"};
+const BADGE = {unread: "badge-unread", reading: "badge-reading", done: "badge-done"};
+
+let items = FIXTURE.map(i => ({...i}));
+let mode = "fixture";
+let statusFilter = new Set();
+let undoState = null, undoTimer = null, openerId = null, nextId = 13;
+
+const $ = id => document.getElementById(id);
+const days = d => Math.round((Date.parse(TODAY) - Date.parse(d)) / 86400000);
+
+function section(item) {
+  if (item.status === "reading") return "Continue reading";
+  const age = days(item.added);
+  if (age <= 6) return "This week";
+  if (age <= 13) return "Last week";
+  return "Earlier";
+}
+
+function length(item) {
+  return item.type === "book" ? "book" : (item.type === "article" ? "" : item.type + " · ") + item.minutes + " min";
+}
+
+function el(tag, attrs, text) {
+  const node = document.createElement(tag);
+  Object.entries(attrs || {}).forEach(([k, v]) => node.setAttribute(k, v));
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function stateBox(message, actionLabel, action, isError) {
+  const box = el("div", {class: "pt-state" + (isError ? " pt-error" : "")});
+  box.append(el("p", {}, message));
+  const btn = el("button", {class: "btn btn-quiet", type: "button"}, actionLabel);
+  btn.addEventListener("click", action);
+  box.append(btn);
+  return box;
+}
+
+function render() {
+  const list = $("list");
+  list.replaceChildren();
+  if (mode === "error") {
+    $("count").textContent = "Could not load";
+    list.append(el("h2", {class: "pt-sr"}, "Error"));
+    list.append(stateBox("Your library could not be loaded. Check your connection and try again.", "Try again", () => setMode("fixture"), true));
+    return;
+  }
+  if (items.length === 0) {
+    $("count").textContent = "0 items";
+    list.append(stateBox("Your shelf is empty. Save something to read later.", "Add item", openAdd));
+    return;
+  }
+  const q = $("q").value.trim().toLowerCase();
+  const type = $("type").value;
+  const shown = items.filter(i =>
+    (!q || (i.title + " " + i.source).toLowerCase().includes(q)) &&
+    (!statusFilter.size || statusFilter.has(i.status)) &&
+    (!type || i.type === type));
+  $("count").textContent = shown.length === 1 ? "1 item" : shown.length + " items";
+  if (!shown.length) {
+    const parts = [];
+    if (q) parts.push("“" + $("q").value.trim() + "”");
+    statusFilter.forEach(s => parts.push(LABEL[s]));
+    if (type) parts.push($("type").selectedOptions[0].textContent);
+    list.append(stateBox("No items match " + parts.join(" with ") + ".", "Clear filters", clearFilters));
+    return;
+  }
+  ["Continue reading", "This week", "Last week", "Earlier"].forEach(name => {
+    const group = shown.filter(i => section(i) === name).sort((a, b) => b.added.localeCompare(a.added));
+    if (!group.length) return;
+    list.append(el("h2", {class: "section-title"}, name));
+    const ul = el("ul", {class: "list"});
+    group.forEach(i => {
+      const row = el("button", {class: "row", type: "button", id: "row-" + i.id});
+      row.append(el("span", {class: "row-title"}, i.title),
+                 el("span", {class: "row-meta"}, [i.source, length(i)].filter(Boolean).join(" · ")),
+                 el("span", {class: "badge " + BADGE[i.status]}, LABEL[i.status]));
+      row.addEventListener("click", () => openDetail(i.id));
+      const li = el("li");
+      li.append(row);
+      ul.append(li);
+    });
+    list.append(ul);
+  });
+}
+
+function clearFilters() {
+  $("q").value = "";
+  $("type").value = "";
+  statusFilter.clear();
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+  render();
+  $("q").focus();
+}
+
+function setMode(next) {
+  clearUndo();
+  mode = next;
+  $("demo").value = next;
+  items = next === "fixture" ? FIXTURE.map(i => ({...i})) : [];
+  render();
+}
+
+function find(id) { return items.find(i => i.id === id); }
+
+function restoreFocus() {
+  const target = openerId && $("row-" + openerId);
+  (target || $("q")).focus();
+}
+
+function openDetail(id) {
+  const i = find(id);
+  openerId = id;
+  $("d-title").textContent = i.title;
+  $("d-source").textContent = i.source;
+  $("d-type").textContent = i.type;
+  $("d-added").textContent = new Date(i.added).toLocaleDateString("en-GB", {day: "numeric", month: "long", year: "numeric"});
+  $("d-minutes").textContent = i.minutes + " min";
+  document.querySelectorAll('[name="d-status"]').forEach(r => { r.checked = r.value === i.status; });
+  $("d-read").disabled = i.status === "done";
+  $("detail").showModal();
+  $("d-title").focus();
+}
+
+function change(id, apply, message) {
+  const index = items.findIndex(i => i.id === id);
+  undoState = {snapshot: items.map(i => ({...i})), mode, id};
+  apply(index);
+  render();
+  showToast(message);
+}
+
+function showToast(message) {
+  $("toast-text").textContent = message;
+  $("toast").hidden = false;
+  clearTimeout(undoTimer);
+  undoTimer = setTimeout(clearUndo, 5000);
+}
+
+function clearUndo() {
+  undoState = null;
+  clearTimeout(undoTimer);
+  $("toast").hidden = true;
+}
+
+document.querySelectorAll('[name="d-status"]').forEach(r => r.addEventListener("change", () => {
+  const id = openerId;
+  change(id, idx => { items[idx].status = r.value; }, "Moved to " + LABEL[r.value] + ".");
+  $("d-read").disabled = r.value === "done";
+}));
+
+$("d-read").addEventListener("click", () => {
+  const id = openerId;
+  $("detail").close();
+  change(id, idx => { items[idx].status = "done"; }, "Marked as read.");
+});
+
+$("d-remove").addEventListener("click", () => {
+  const id = openerId;
+  openerId = null;
+  $("detail").close();
+  change(id, idx => { items.splice(idx, 1); }, "Removed.");
+});
+
+$("d-close").addEventListener("click", () => $("detail").close());
+$("detail").addEventListener("close", restoreFocus);
+
+$("undo").addEventListener("click", () => {
+  if (!undoState) return;
+  items = undoState.snapshot;
+  mode = undoState.mode;
+  $("demo").value = mode;
+  openerId = undoState.id;
+  clearUndo();
+  render();
+  // Undoing an add has no row to return to, so focus goes back to Add item.
+  openerId ? restoreFocus() : $("add-open").focus();
+});
+
+// Format check only: https and a host name. The prototype never fetches the address.
+function parseHttps(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && url.hostname ? url : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function openAdd() {
+  $("add-form").reset();
+  ["a-name", "a-url"].forEach(f => { $(f).removeAttribute("aria-invalid"); $(f + "-err").textContent = ""; });
+  $("add").showModal();
+  $("a-name").focus();
+}
+
+$("add-open").addEventListener("click", openAdd);
+$("a-cancel").addEventListener("click", () => $("add").close());
+$("add").addEventListener("close", () => $("add-open").focus());
+
+$("add-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const title = $("a-name").value.trim();
+  const url = $("a-url").value.trim();
+  const parsed = url ? parseHttps(url) : null;
+  const errors = {
+    "a-name": title ? "" : "Enter a title.",
+    "a-url": !url || parsed ? "" : "Enter a web address starting with https://"
+  };
+  let first = null;
+  Object.entries(errors).forEach(([f, msg]) => {
+    $(f + "-err").textContent = msg;
+    if (msg) { $(f).setAttribute("aria-invalid", "true"); first = first || f; }
+    else $(f).removeAttribute("aria-invalid");
+  });
+  if (first) { $(first).focus(); return; }
+  undoState = {snapshot: items.map(i => ({...i})), mode, id: null};
+  if (mode === "error") { mode = "empty"; $("demo").value = "empty"; }
+  const type = $("a-type").value;
+  items.unshift({id: "r" + nextId++, title, source: parsed ? parsed.hostname : "Saved manually", type,
+                 status: "unread", added: TODAY, minutes: type === "book" ? 240 : 10});
+  $("add").close();
+  render();
+  showToast("Added to This week.");
+});
+
+document.querySelectorAll(".chip").forEach(chip => chip.addEventListener("click", () => {
+  const on = chip.getAttribute("aria-pressed") !== "true";
+  chip.setAttribute("aria-pressed", String(on));
+  on ? statusFilter.add(chip.dataset.status) : statusFilter.delete(chip.dataset.status);
+  render();
+}));
+$("q").addEventListener("input", render);
+$("type").addEventListener("change", render);
+$("demo").addEventListener("change", e => setMode(e.target.value));
+
+render();
+</script>
+</body>
+</html>

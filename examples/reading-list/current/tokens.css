@@ -1,0 +1,34 @@
+/* Synthetic design tokens for the illustrative "Shelf" reading-list app. */
+:root {
+  /* Colour */
+  --color-bg: #f6f5f1;
+  --color-surface: #ffffff;
+  --color-text-primary: #1c1b19;
+  --color-text-secondary: #5e5a52;
+  --color-border: #dcd8ce;
+  --color-accent: #2b5c8a;
+  --color-accent-contrast: #ffffff;
+  --color-success: #2f6b3a;
+  --color-danger: #a1312b;
+  --color-highlight: #fbefc9;
+
+  /* Type */
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-size-title: 1.5rem;
+  --font-size-body: 1rem;
+  --font-size-meta: 0.875rem;
+  --font-weight-strong: 600;
+
+  /* Space and shape */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --radius-card: 12px;
+  --radius-chip: 999px;
+
+  /* Motion */
+  --motion-fast: 120ms;
+  --motion-standard: 200ms;
+}

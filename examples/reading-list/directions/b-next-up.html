@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction B — Next up (static)</title>
+<style>
+  :root {
+    --color-bg: #f6f5f1; --color-surface: #ffffff; --color-text-primary: #1c1b19; --color-text-secondary: #5e5a52;
+    --color-border: #dcd8ce; --color-accent: #2b5c8a; --color-accent-contrast: #ffffff; --color-highlight: #fbefc9;
+    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px; --radius-card: 12px; --radius-chip: 999px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-family); background: var(--color-bg); color: var(--color-text-primary); line-height: 1.4; }
+  .banner { margin: 0; background: var(--color-highlight); padding: var(--space-2) var(--space-4); font-size: 0.875rem; }
+  main { max-width: 560px; margin: 0 auto; padding: var(--space-4); }
+  h1 { font-size: 1.25rem; margin: 0 0 var(--space-3); color: var(--color-text-secondary); font-weight: 500; }
+  .time { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-4); }
+  .time button { font: inherit; border: 1px solid var(--color-border); background: var(--color-surface); border-radius: var(--radius-chip); padding: var(--space-2) var(--space-4); min-height: 44px; }
+  .time button[aria-pressed="true"] { background: var(--color-accent); color: var(--color-accent-contrast); border-color: var(--color-accent); }
+  .hero { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: var(--space-6); }
+  .hero .kicker { font-size: 0.875rem; color: var(--color-text-secondary); margin: 0; }
+  .hero h2 { font-size: 1.6rem; margin: var(--space-2) 0; }
+  .hero .why { margin: 0 0 var(--space-4); color: var(--color-text-secondary); }
+  .actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+  .btn { font: inherit; min-height: 44px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-chip); border: 1px solid var(--color-accent); }
+  .btn-primary { background: var(--color-accent); color: var(--color-accent-contrast); }
+  .btn-quiet { background: transparent; color: var(--color-accent); }
+  h3 { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-secondary); margin: var(--space-6) 0 var(--space-2); }
+  ol { margin: 0; padding-left: 1.25rem; }
+  ol li { padding: var(--space-2) 0; border-bottom: 1px solid var(--color-border); }
+  .meta { color: var(--color-text-secondary); font-size: 0.875rem; display: block; }
+  footer { margin-top: var(--space-6); display: flex; justify-content: space-between; }
+  a { color: var(--color-accent); }
+  :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<p class="banner" role="note">Direction B — static mock-up. All data is synthetic.</p>
+<main>
+  <h1>How long do you have?</h1>
+  <div class="time" role="group" aria-label="Available time">
+    <button type="button" aria-pressed="false">10 min</button>
+    <button type="button" aria-pressed="true">30 min</button>
+    <button type="button" aria-pressed="false">Longer</button>
+  </div>
+  <section class="hero" aria-labelledby="pick">
+    <p class="kicker">Next up · picks up where you left off</p>
+    <h2 id="pick">A field guide to offline-first sync</h2>
+    <p class="why">Northwind Engineering Blog · 22 min · you started this 3 days ago</p>
+    <div class="actions">
+      <button class="btn btn-primary" type="button">Continue reading</button>
+      <button class="btn btn-quiet" type="button">Skip for now</button>
+      <button class="btn btn-quiet" type="button">Mark as read</button>
+    </div>
+  </section>
+  <h3>Then</h3>
+  <ol>
+    <li>Why forms fail on small screens <span class="meta">Interface Weekly · 11 min · saved this week</span></li>
+    <li>Colour is not a status <span class="meta">Type Notes · video · 12 min</span></li>
+    <li>Queues, caches and the cost of waiting <span class="meta">Northwind Engineering Blog · 14 min</span></li>
+  </ol>
+  <footer>
+    <a href="#">All 12 items</a>
+    <a href="#">Add item</a>
+  </footer>
+</main>
+</body>
+</html>

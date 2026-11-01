@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction A — Sections (static)</title>
+<style>
+  :root {
+    --color-bg: #f6f5f1; --color-surface: #ffffff; --color-text-primary: #1c1b19; --color-text-secondary: #5e5a52;
+    --color-border: #dcd8ce; --color-accent: #2b5c8a; --color-accent-contrast: #ffffff; --color-success: #2f6b3a;
+    --color-progress: #7a4f00; --color-highlight: #fbefc9;
+    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-size-title: 1.5rem; --font-size-meta: 0.875rem; --font-weight-strong: 600;
+    --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px;
+    --radius-card: 12px; --radius-chip: 999px; --motion-fast: 120ms; --motion-standard: 200ms;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-family); background: var(--color-bg); color: var(--color-text-primary); line-height: 1.4; }
+  .banner { margin: 0; background: var(--color-highlight); padding: var(--space-2) var(--space-4); font-size: var(--font-size-meta); }
+  .app { max-width: 720px; margin: 0 auto; padding: var(--space-4); }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); }
+  h1 { font-size: var(--font-size-title); margin: 0; }
+  .btn { font: inherit; border-radius: var(--radius-chip); padding: var(--space-2) var(--space-4); border: 1px solid var(--color-accent); cursor: pointer; min-height: 44px; }
+  .btn-primary { background: var(--color-accent); color: var(--color-accent-contrast); }
+  .btn-quiet { background: var(--color-surface); color: var(--color-accent); }
+  .search { width: 100%; margin-top: var(--space-4); padding: var(--space-3); font: inherit; border: 1px solid var(--color-border); border-radius: var(--radius-card); background: var(--color-surface); }
+  .filters { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin: var(--space-3) 0; }
+  .chip { font: inherit; font-size: var(--font-size-meta); border: 1px solid var(--color-border); background: var(--color-surface); border-radius: var(--radius-chip); padding: var(--space-1) var(--space-3); min-height: 44px; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--color-accent); color: var(--color-accent-contrast); border-color: var(--color-accent); }
+  .count { margin-left: auto; color: var(--color-text-secondary); font-size: var(--font-size-meta); }
+  .section-title { font-size: var(--font-size-meta); font-weight: var(--font-weight-strong); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin: var(--space-6) 0 var(--space-2); }
+  .list { list-style: none; margin: 0; padding: 0; }
+  .row { width: 100%; text-align: left; font: inherit; color: inherit; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: var(--space-3); margin-bottom: var(--space-2); display: grid; grid-template-columns: 1fr auto; gap: var(--space-1) var(--space-3); cursor: pointer; }
+  .row-title { font-weight: var(--font-weight-strong); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .row-meta { grid-column: 1; color: var(--color-text-secondary); font-size: var(--font-size-meta); }
+  .badge { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-size: var(--font-size-meta); border-radius: var(--radius-chip); padding: 2px var(--space-2); border: 1px solid currentColor; white-space: nowrap; }
+  .badge-unread { color: var(--color-accent); } .badge-reading { color: var(--color-progress); } .badge-done { color: var(--color-success); }
+  :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<p class="banner" role="note">Direction A — static mock-up. All data is synthetic.</p>
+<div class="app">
+  <div class="top">
+    <h1>Library</h1>
+    <button class="btn btn-primary" type="button">Add item</button>
+  </div>
+  <input id="q" class="search" type="search" placeholder="Search title or source" aria-label="Search title or source">
+  <div class="filters" role="group" aria-label="Filter by status">
+    <button class="chip" type="button" aria-pressed="false">To read</button>
+    <button class="chip" type="button" aria-pressed="false">Reading</button>
+    <button class="chip" type="button" aria-pressed="false">Done</button>
+    <span class="count">12 items</span>
+  </div>
+
+  <h2 class="section-title">Continue reading</h2>
+  <ul class="list">
+    <li><button class="row" type="button"><span class="row-title">A field guide to offline-first sync</span><span class="row-meta">Northwind Engineering Blog · 22 min</span><span class="badge badge-reading">Reading</span></button></li>
+    <li><button class="row" type="button"><span class="row-title">The patient gardener</span><span class="row-meta">Harbour Press · book</span><span class="badge badge-reading">Reading</span></button></li>
+  </ul>
+
+  <h2 class="section-title">This week</h2>
+  <ul class="list">
+    <li><button class="row" type="button"><span class="row-title">Designing calm notifications</span><span class="row-meta">Interface Weekly · 8 min</span><span class="badge badge-unread">To read</span></button></li>
+    <li><button class="row" type="button"><span class="row-title">Why forms fail on small screens</span><span class="row-meta">Interface Weekly · 11 min</span><span class="badge badge-unread">To read</span></button></li>
+  </ul>
+
+  <h2 class="section-title">Last week</h2>
+  <ul class="list">
+    <li><button class="row" type="button"><span class="row-title">Budgeting for a first flat: a practical walkthrough with worked examples for every monthly bill</span><span class="row-meta">Kettle &amp; Coin · 15 min</span><span class="badge badge-unread">To read</span></button></li>
+    <li><button class="row" type="button"><span class="row-title">Typography at reading distance</span><span class="row-meta">Type Notes · video · 18 min</span><span class="badge badge-unread">To read</span></button></li>
+  </ul>
+
+  <h2 class="section-title">Earlier</h2>
+  <ul class="list">
+    <li><button class="row" type="button"><span class="row-title">Measuring what matters in small teams</span><span class="row-meta">Orchard Review · 9 min</span><span class="badge badge-done">Done</span></button></li>
+    <li><button class="row" type="button"><span class="row-title">Slow bread</span><span class="row-meta">Harbour Press · book</span><span class="badge badge-unread">To read</span></button></li>
+  </ul>
+</div>
+</body>
+</html>

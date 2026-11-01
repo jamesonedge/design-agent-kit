@@ -1,0 +1,22 @@
+# Private build material — never publish
+BUILD-CONTRACT.private.md
+BUILD-REPORT.private.md
+*.private.md
+.agent-handoffs/
+
+# Local evidence and installation receipts
+receipts/
+*.receipt.json
+evidence/
+.local/
+
+# Caches and archives
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+.DS_Store

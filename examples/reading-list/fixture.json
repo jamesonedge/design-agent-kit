@@ -1,0 +1,18 @@
+{
+  "_note": "Synthetic data for the illustrative reading-list example. Titles and sources are invented. Not user research or product metrics.",
+  "today": "2026-10-30",
+  "items": [
+    {"id": "r1", "title": "Designing calm notifications", "source": "Interface Weekly", "type": "article", "topic": "Design", "status": "unread", "added": "2026-10-29", "minutes": 8},
+    {"id": "r2", "title": "A field guide to offline-first sync", "source": "Northwind Engineering Blog", "type": "article", "topic": "Engineering", "status": "reading", "added": "2026-10-27", "minutes": 22},
+    {"id": "r3", "title": "The patient gardener", "source": "Harbour Press", "type": "book", "topic": "Leisure", "status": "reading", "added": "2026-10-12", "minutes": 340},
+    {"id": "r4", "title": "Why forms fail on small screens", "source": "Interface Weekly", "type": "article", "topic": "Design", "status": "unread", "added": "2026-10-24", "minutes": 11},
+    {"id": "r5", "title": "Budgeting for a first flat: a practical walkthrough with worked examples for every monthly bill", "source": "Kettle & Coin", "type": "article", "topic": "Money", "status": "unread", "added": "2026-10-23", "minutes": 15},
+    {"id": "r6", "title": "Typography at reading distance", "source": "Type Notes", "type": "video", "topic": "Design", "status": "unread", "added": "2026-10-21", "minutes": 18},
+    {"id": "r7", "title": "Measuring what matters in small teams", "source": "Orchard Review", "type": "article", "topic": "Work", "status": "done", "added": "2026-10-15", "minutes": 9},
+    {"id": "r8", "title": "Slow bread", "source": "Harbour Press", "type": "book", "topic": "Leisure", "status": "unread", "added": "2026-10-09", "minutes": 260},
+    {"id": "r9", "title": "Queues, caches and the cost of waiting", "source": "Northwind Engineering Blog", "type": "article", "topic": "Engineering", "status": "unread", "added": "2026-10-06", "minutes": 14},
+    {"id": "r10", "title": "Writing release notes people read", "source": "Orchard Review", "type": "article", "topic": "Work", "status": "done", "added": "2026-10-02", "minutes": 6},
+    {"id": "r11", "title": "Colour is not a status", "source": "Type Notes", "type": "video", "topic": "Design", "status": "unread", "added": "2026-09-28", "minutes": 12},
+    {"id": "r12", "title": "An introduction to tidal energy", "source": "Coastline Science", "type": "paper", "topic": "Science", "status": "unread", "added": "2026-09-19", "minutes": 35}
+  ]
+}

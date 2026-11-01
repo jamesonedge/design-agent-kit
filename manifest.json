@@ -1,0 +1,51 @@
+{
+  "name": "design-agent-kit",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": "https://github.com/jamesonedge/design-agent-kit",
+  "skills": [
+    {
+      "name": "senior-design-review",
+      "path": "skills/senior-design-review",
+      "entrypoint": "skills/senior-design-review/SKILL.md",
+      "files": [
+        "SKILL.md",
+        "references/accessibility-i18n.md",
+        "references/review-lenses.md",
+        "templates/context.md",
+        "templates/proposal.md",
+        "templates/review.md"
+      ]
+    },
+    {
+      "name": "interactive-mockup",
+      "path": "skills/interactive-mockup",
+      "entrypoint": "skills/interactive-mockup/SKILL.md",
+      "files": [
+        "SKILL.md",
+        "references/graft-rules.md",
+        "references/prototype-quality.md",
+        "templates/change-ledger.md",
+        "templates/comparison.html",
+        "templates/direction-brief.md",
+        "templates/direction.html"
+      ]
+    }
+  ],
+  "docs": {
+    "readme": "README.md",
+    "agents": "AGENTS.md",
+    "prompts": "docs/prompts.md",
+    "compatibility": "docs/compatibility.md",
+    "project_context": "docs/project-design-context.md",
+    "quality_checklist": "docs/quality-checklist.md",
+    "security": "docs/security.md",
+    "contributing": "CONTRIBUTING.md",
+    "changelog": "CHANGELOG.md"
+  },
+  "tools": {
+    "installer": "scripts/install.py",
+    "validator": "scripts/validate.py"
+  },
+  "example": "examples/reading-list/README.md"
+}
