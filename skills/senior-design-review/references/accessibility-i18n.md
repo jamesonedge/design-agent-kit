@@ -2,6 +2,23 @@
 
 Use this for section F. Report what you checked and how. If you did not measure something, say "not measured".
 
+## Measurable targets
+
+Published thresholds to measure against. Cite the source when you use one, and still state how you measured; a threshold is not a result.
+
+| Check | Target | Source |
+| --- | --- | --- |
+| Text contrast | At least 4.5:1; 3:1 for large text | WCAG 2.2 AA, [SC 1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) |
+| Non-text contrast (UI components, focus indicators, meaningful graphics) | At least 3:1 against adjacent colours | WCAG 2.2 AA, [SC 1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html) |
+| Pointer target size | At least 24 by 24 CSS pixels, or enough spacing (exceptions apply) | WCAG 2.2 AA, [SC 2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) |
+| Focus visible | Keyboard focus indicator is visible | WCAG 2.2 AA, [SC 2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html) |
+| Focus not obscured | Focused element is not entirely hidden by author content (sticky headers, banners) | WCAG 2.2 AA, [SC 2.4.11 Focus Not Obscured (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html) |
+
+Platform guidance (not WCAG requirements; follow when designing for that platform):
+
+- Apple HIG: default hit region of 44x44 pt on iOS and iPadOS ([Accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility)).
+- Material 3: touch targets of at least 48x48 dp ([Structure](https://m3.material.io/foundations/designing/structure)).
+
 ## Perception
 
 - [ ] Status, selection and errors are conveyed by text, icon or shape as well as colour.
