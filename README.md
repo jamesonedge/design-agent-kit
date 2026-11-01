@@ -1,5 +1,9 @@
 # design-agent-kit
 
+<p align="center">
+  <img src="docs/images/kit-overview.png" width="420" alt="Neon overview graphic of design-agent-kit: the senior-design-review and interactive-mockup skills, their workflow steps, and the agents they run in">
+</p>
+
 Two portable skills for evidence-based interface critique and working design prototypes:
 
 - **`senior-design-review`** — turns "make this screen better" into an evidence-based critique (structure, hierarchy, actions, gestures, visuals, accessibility) and a buildable specification with a Cut / Add / Revise / Keep ledger.
