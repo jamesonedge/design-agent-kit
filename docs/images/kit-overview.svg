@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2780" viewBox="0 0 1080 2780" font-family="Inter, 'DejaVu Sans', sans-serif"><defs>
+<filter id="g" filterUnits="userSpaceOnUse" x="0" y="0" width="1080" height="2780"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="gs" filterUnits="userSpaceOnUse" x="0" y="0" width="1080" height="2780"><feGaussianBlur stdDeviation="11" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="holo" x1="0" x2="1"><stop offset="0" stop-color="#00E5FF"/><stop offset=".5" stop-color="#FF2BD6"/><stop offset="1" stop-color="#A86BFF"/></linearGradient>
+<linearGradient id="h2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00E5FF"/><stop offset=".6" stop-color="#A86BFF"/><stop offset="1" stop-color="#FF2BD6"/></linearGradient>
+<linearGradient id="h3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF2BD6"/><stop offset=".6" stop-color="#A86BFF"/><stop offset="1" stop-color="#00E5FF"/></linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#0E2A3A"/></pattern>
+<pattern id="hex" width="28" height="48.5" patternUnits="userSpaceOnUse"><path d="M14 0l14 8v16l-14 8l-14-8V8z M14 32v16.5" fill="none" stroke="#1A1440" stroke-width=".7"/></pattern>
+<pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#fff" opacity=".03"/></pattern>
+
+<marker id="aC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#00E5FF"/></marker><marker id="aG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#39FF88"/></marker><marker id="aV" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#A86BFF"/></marker><marker id="aR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#FF3B5C"/></marker><marker id="aGr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6A7285"/></marker><marker id="aY" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#FFB020"/></marker><marker id="aW" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D6DEEC"/></marker>
+</defs><rect width="1080" height="2780" fill="#05060A"/><rect width="1080" height="2780" fill="url(#grid)"/><rect width="1080" height="2780" fill="url(#hex)" opacity=".6"/><g transform="" stroke="#00E5FF" stroke-width="1.2" fill="none" opacity=".45"><path d="M0 40H60L80 20H170"/><path d="M0 60H70L90 40H120"/><path d="M30 0V30L50 50"/><circle cx="170" cy="20" r="3" fill="#00E5FF"/><circle cx="120" cy="40" r="3"/><circle cx="50" cy="50" r="3" fill="#FF2BD6" stroke="#FF2BD6"/></g>
+<g transform="translate(1080,0) scale(-1,1)" stroke="#00E5FF" stroke-width="1.2" fill="none" opacity=".45"><path d="M0 40H60L80 20H170"/><path d="M0 60H70L90 40H120"/><path d="M30 0V30L50 50"/><circle cx="170" cy="20" r="3" fill="#00E5FF"/><circle cx="120" cy="40" r="3"/><circle cx="50" cy="50" r="3" fill="#FF2BD6" stroke="#FF2BD6"/></g>
+<g transform="translate(0,2780) scale(1,-1)" stroke="#00E5FF" stroke-width="1.2" fill="none" opacity=".45"><path d="M0 40H60L80 20H170"/><path d="M0 60H70L90 40H120"/><path d="M30 0V30L50 50"/><circle cx="170" cy="20" r="3" fill="#00E5FF"/><circle cx="120" cy="40" r="3"/><circle cx="50" cy="50" r="3" fill="#FF2BD6" stroke="#FF2BD6"/></g>
+<g transform="translate(1080,2780) scale(-1,-1)" stroke="#00E5FF" stroke-width="1.2" fill="none" opacity=".45"><path d="M0 40H60L80 20H170"/><path d="M0 60H70L90 40H120"/><path d="M30 0V30L50 50"/><circle cx="170" cy="20" r="3" fill="#00E5FF"/><circle cx="120" cy="40" r="3"/><circle cx="50" cy="50" r="3" fill="#FF2BD6" stroke="#FF2BD6"/></g>
+<polygon points="252,60 430,60 430,238 408,260 230,260 230,82" fill="#070A12" stroke="#00E5FF" stroke-width="4" filter="url(#gs)"/>
+<polygon points="672,60 850,60 850,238 828,260 650,260 650,82" fill="#070A12" stroke="#FF2BD6" stroke-width="4" filter="url(#gs)"/>
+<g stroke="#00E5FF" stroke-width="5" fill="none" filter="url(#g)" stroke-linecap="round"><rect x="270" y="95" width="90" height="120" rx="6"/><path d="M285 125h55M285 150h45M285 175h35"/><circle cx="360" cy="180" r="30" stroke="#FF2BD6"/><path d="M382 202l28 28" stroke="#FF2BD6" stroke-width="8"/></g>
+<g stroke="#FF2BD6" stroke-width="5" fill="none" filter="url(#g)" stroke-linejoin="round"><rect x="680" y="95" width="140" height="125" rx="6"/><path d="M680 120h140"/><circle cx="695" cy="108" r="3" fill="#FF2BD6"/><circle cx="708" cy="108" r="3" fill="#FF2BD6"/><rect x="692" y="135" width="34" height="70" stroke="#00E5FF"/><rect x="733" y="135" width="34" height="70" stroke="#FFB020"/><rect x="774" y="135" width="34" height="70" stroke="#00E5FF"/></g>
+<text x="540" y="185" text-anchor="middle" fill="url(#holo)" font-size="80" font-weight="800" filter="url(#g)">+</text>
+<g fill="url(#holo)" filter="url(#g)" font-weight="900" text-anchor="middle" letter-spacing="8"><text x="540" y="370" font-size="96">DESIGN</text><text x="540" y="470" font-size="76">AGENT KIT</text></g>
+<text x="540" y="535" text-anchor="middle" fill="#D6DEEC" font-size="28" font-weight="800" letter-spacing="2" >EVIDENCE-BASED REVIEW + WORKING PROTOTYPES</text>
+<text x="540" y="575" text-anchor="middle" fill="#D6DEEC" font-size="25" font-weight="800" letter-spacing="2" >PLAIN MARKDOWN · MIT · NO DEPS · NO NETWORK</text>
+<polygon points="76,610 1020,610 1020,744 1004,760 60,760 60,626" fill="#0A0D16" stroke="#2A3550" stroke-width="2"/>
+<line x1="100" y1="665" x2="180" y2="665" stroke="#00E5FF" stroke-width="5"  filter="url(#g)"/>
+<text x="200" y="675" text-anchor="start" fill="#00E5FF" font-size="27" font-weight="800" letter-spacing="2" >SKILL FLOW</text>
+<line x1="570" y1="665" x2="650" y2="665" stroke="#FFB020" stroke-width="5"  filter="url(#g)"/>
+<text x="670" y="675" text-anchor="start" fill="#FFB020" font-size="27" font-weight="800" letter-spacing="2" >YOUR CHOICE</text>
+<line x1="100" y1="723" x2="180" y2="723" stroke="#A86BFF" stroke-width="4" stroke-dasharray="12 8" filter="url(#g)"/>
+<text x="200" y="733" text-anchor="start" fill="#A86BFF" font-size="27" font-weight="800" letter-spacing="2" >REFERENCE</text>
+<line x1="570" y1="723" x2="650" y2="723" stroke="#39FF88" stroke-width="5" stroke-dasharray="4 6" filter="url(#g)"/>
+<text x="670" y="733" text-anchor="start" fill="#39FF88" font-size="27" font-weight="800" letter-spacing="2" >KIT CHECKS</text>
+<g opacity="1"><polygon points="304,800 790,800 790,906 776,920 290,920 290,814" fill="#0A0F1A" stroke="#D6DEEC" stroke-width="2.5"  filter="url(#g)"/>
+<text x="540.0" y="856.6" text-anchor="middle" fill="#D6DEEC" font-size="32" font-weight="800" letter-spacing="2">YOUR SCREEN / FLOW</text>
+<text x="540.0" y="887.1" text-anchor="middle" fill="#AEB8CC" font-size="22" font-weight="800" letter-spacing="2">SCREENSHOTS · CODE · COMPLAINT</text>
+</g>
+<path d="M540 926V982" fill="none" stroke="#D6DEEC" stroke-width="3.5"  marker-end="url(#aW)" filter="url(#g)"/>
+<text x="565" y="965" text-anchor="start" fill="#D6DEEC" font-size="24" font-weight="800" letter-spacing="2" >BRIEF</text>
+<polygon points="66,990 960,990 960,1524 934,1550 40,1550 40,1016" fill="#071019" fill-opacity=".85" stroke="url(#h2)" stroke-width="3" filter="url(#g)"/>
+<text x="500.0" y="1045" text-anchor="middle" fill="#00E5FF" font-size="32" font-weight="800" letter-spacing="4">SENIOR-DESIGN-REVIEW</text>
+<g opacity="1"><polygon points="94,1075 580,1075 580,1171 566,1185 80,1185 80,1089" fill="#0A0F1A" stroke="#00E5FF" stroke-width="2.5"  filter="url(#g)"/>
+<text x="330.0" y="1125.3" text-anchor="middle" fill="#00E5FF" font-size="28" font-weight="800" letter-spacing="2">1 · INITIAL PROPOSAL</text>
+<text x="330.0" y="1154.7" text-anchor="middle" fill="#D6DEEC" font-size="22" font-weight="800" letter-spacing="2">EXPLICIT DRAFT FIRST</text>
+</g>
+<path d="M330 1191V1227" fill="none" stroke="#00E5FF" stroke-width="3.5"  marker-end="url(#aC)" filter="url(#g)"/>
+<g opacity="1"><polygon points="94,1235 580,1235 580,1371 566,1385 80,1385 80,1249" fill="#0A0F1A" stroke="#00E5FF" stroke-width="2.5"  filter="url(#g)"/>
+<text x="330.0" y="1279.1" text-anchor="middle" fill="#00E5FF" font-size="28" font-weight="800" letter-spacing="2">2 · FRESH REVIEW</text>
+<text x="330.0" y="1310.3" text-anchor="middle" fill="#D6DEEC" font-size="24" font-weight="800" letter-spacing="2">CRITIQUE A–H</text>
+<text x="330.0" y="1336.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">STRUCTURE · IA · ACTIONS</text>
+<text x="330.0" y="1361.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">GESTURES · VISUAL · A11Y</text>
+</g>
+<path d="M330 1391V1427" fill="none" stroke="#00E5FF" stroke-width="3.5"  marker-end="url(#aC)" filter="url(#g)"/>
+<g opacity="1"><polygon points="94,1435 580,1435 580,1511 566,1525 80,1525 80,1449" fill="#0A0F1A" stroke="#39FF88" stroke-width="2.5"  filter="url(#g)"/>
+<text x="330.0" y="1487.8" text-anchor="middle" fill="#39FF88" font-size="24" font-weight="800" letter-spacing="2">CUT / ADD / REVISE / KEEP</text>
+</g>
+<g opacity="1"><polygon points="634,1075 930,1075 930,1201 916,1215 620,1215 620,1089" fill="#0A0F1A" stroke="#A86BFF" stroke-width="2.5" stroke-dasharray="12 8" filter="url(#g)"/>
+<text x="775.0" y="1141.0" text-anchor="middle" fill="#A86BFF" font-size="26" font-weight="800" letter-spacing="2">REVIEW LENSES</text>
+<text x="775.0" y="1167.8" text-anchor="middle" fill="#D6DEEC" font-size="20" font-weight="800" letter-spacing="2">A–H GUIDANCE</text>
+</g>
+<g opacity="1"><polygon points="634,1240 930,1240 930,1511 916,1525 620,1525 620,1254" fill="#0A0F1A" stroke="#A86BFF" stroke-width="2.5" stroke-dasharray="12 8" filter="url(#g)"/>
+<text x="775.0" y="1302.2" text-anchor="middle" fill="#A86BFF" font-size="26" font-weight="800" letter-spacing="2">A11Y + I18N</text>
+<text x="775.0" y="1330.9" text-anchor="middle" fill="#D6DEEC" font-size="22" font-weight="800" letter-spacing="2">WCAG 2.2 AA</text>
+<text x="775.0" y="1356.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">TEXT 4.5:1</text>
+<text x="775.0" y="1381.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">UI PARTS 3:1</text>
+<text x="775.0" y="1406.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">TARGET 24×24 PX</text>
+<text x="775.0" y="1431.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">FOCUS VISIBLE</text>
+<text x="775.0" y="1456.5" text-anchor="middle" fill="#FFB020" font-size="20" font-weight="800" letter-spacing="2">HIG 44 PT</text>
+<text x="775.0" y="1481.5" text-anchor="middle" fill="#FFB020" font-size="20" font-weight="800" letter-spacing="2">MATERIAL 48 DP</text>
+</g>
+<path d="M620 1145H588" fill="none" stroke="#A86BFF" stroke-width="3.5" stroke-dasharray="12 8" marker-end="url(#aV)" filter="url(#g)"/>
+<path d="M620 1310H588" fill="none" stroke="#A86BFF" stroke-width="3.5" stroke-dasharray="12 8" marker-end="url(#aV)" filter="url(#g)"/>
+<path d="M330 1556V1612" fill="none" stroke="#00E5FF" stroke-width="3.5"  marker-end="url(#aC)" filter="url(#g)"/>
+<text x="355" y="1595" text-anchor="start" fill="#00E5FF" font-size="24" font-weight="800" letter-spacing="2" >SPEC → MOCKUP</text>
+<polygon points="66,1620 960,1620 960,2154 934,2180 40,2180 40,1646" fill="#071019" fill-opacity=".85" stroke="url(#h3)" stroke-width="3" filter="url(#g)"/>
+<text x="500.0" y="1675" text-anchor="middle" fill="#FF2BD6" font-size="32" font-weight="800" letter-spacing="4">INTERACTIVE-MOCKUP</text>
+<g opacity="1"><polygon points="94,1700 580,1700 580,1786 566,1800 80,1800 80,1714" fill="#0A0F1A" stroke="#FF2BD6" stroke-width="2.5"  filter="url(#g)"/>
+<text x="330.0" y="1746.6" text-anchor="middle" fill="#FF2BD6" font-size="28" font-weight="800" letter-spacing="2">2–3 DIRECTIONS</text>
+<text x="330.0" y="1774.0" text-anchor="middle" fill="#D6DEEC" font-size="20" font-weight="800" letter-spacing="2">DIFFERENT IN STRUCTURE</text>
+</g>
+<path d="M330 1806V1832" fill="none" stroke="#FF2BD6" stroke-width="3.5"  marker-end="url(#aC)" filter="url(#g)"/>
+<g opacity="1"><polygon points="94,1840 580,1840 580,1926 566,1940 80,1940 80,1854" fill="#0A0F1A" stroke="#FFB020" stroke-width="2.5"  filter="url(#g)"/>
+<text x="330.0" y="1885.3" text-anchor="middle" fill="#FFB020" font-size="28" font-weight="800" letter-spacing="2">COMPARISON PAGE</text>
+<text x="330.0" y="1914.7" text-anchor="middle" fill="#D6DEEC" font-size="22" font-weight="800" letter-spacing="2">YOU PICK ONE</text>
+</g>
+<path d="M330 1946V1972" fill="none" stroke="#FFB020" stroke-width="3.5"  marker-end="url(#aY)" filter="url(#g)"/>
+<g opacity="1"><polygon points="94,1980 580,1980 580,2136 566,2150 80,2150 80,1994" fill="#0A0F1A" stroke="#FF2BD6" stroke-width="2.5"  filter="url(#g)"/>
+<text x="330.0" y="2034.1" text-anchor="middle" fill="#FF2BD6" font-size="28" font-weight="800" letter-spacing="2">STRICT GRAFT</text>
+<text x="330.0" y="2063.4" text-anchor="middle" fill="#D6DEEC" font-size="22" font-weight="800" letter-spacing="2">OFFLINE HTML PROTOTYPE</text>
+<text x="330.0" y="2090.9" text-anchor="middle" fill="#D6DEEC" font-size="22" font-weight="800" letter-spacing="2">+ CHANGE LEDGER</text>
+<text x="330.0" y="2116.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">NO QUIET REDESIGN</text>
+</g>
+<g opacity="1"><polygon points="634,1700 930,1700 930,1826 916,1840 620,1840 620,1714" fill="#0A0F1A" stroke="#A86BFF" stroke-width="2.5" stroke-dasharray="12 8" filter="url(#g)"/>
+<text x="775.0" y="1753.5" text-anchor="middle" fill="#A86BFF" font-size="26" font-weight="800" letter-spacing="2">GRAFT RULES</text>
+<text x="775.0" y="1780.2" text-anchor="middle" fill="#D6DEEC" font-size="20" font-weight="800" letter-spacing="2">BUILD WHAT</text>
+<text x="775.0" y="1805.2" text-anchor="middle" fill="#D6DEEC" font-size="20" font-weight="800" letter-spacing="2">YOU CHOSE</text>
+</g>
+<g opacity="1"><polygon points="634,1870 930,1870 930,2136 916,2150 620,2150 620,1884" fill="#0A0F1A" stroke="#A86BFF" stroke-width="2.5" stroke-dasharray="12 8" filter="url(#g)"/>
+<text x="775.0" y="1944.7" text-anchor="middle" fill="#A86BFF" font-size="26" font-weight="800" letter-spacing="2">QUALITY GATE</text>
+<text x="775.0" y="1971.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">OFFLINE</text>
+<text x="775.0" y="1996.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">RESPONSIVE</text>
+<text x="775.0" y="2021.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">KEYBOARD + FOCUS</text>
+<text x="775.0" y="2046.5" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">REDUCED MOTION</text>
+<text x="775.0" y="2069.6" text-anchor="middle" fill="#AEB8CC" font-size="18" font-weight="800" letter-spacing="2">EMPTY / ERROR STATES</text>
+<text x="775.0" y="2094.0" text-anchor="middle" fill="#AEB8CC" font-size="20" font-weight="800" letter-spacing="2">NO DEAD ACTIONS</text>
+</g>
+<path d="M620 1770H588" fill="none" stroke="#A86BFF" stroke-width="3.5" stroke-dasharray="12 8" marker-end="url(#aV)" filter="url(#g)"/>
+<path d="M620 2060H588" fill="none" stroke="#A86BFF" stroke-width="3.5" stroke-dasharray="12 8" marker-end="url(#aV)" filter="url(#g)"/>
+<polygon points="66,2230 480,2230 480,2604 454,2630 40,2630 40,2256" fill="#071019" fill-opacity=".85" stroke="url(#h2)" stroke-width="3" filter="url(#g)"/>
+<text x="260.0" y="2285" text-anchor="middle" fill="#39FF88" font-size="32" font-weight="800" letter-spacing="4">KIT CHECKS</text>
+<g opacity="1"><polygon points="84,2310 450,2310 450,2386 436,2400 70,2400 70,2324" fill="#0A0F1A" stroke="#39FF88" stroke-width="2.5"  filter="url(#g)"/>
+<text x="260.0" y="2354.1" text-anchor="middle" fill="#39FF88" font-size="26" font-weight="800" letter-spacing="2">VALIDATE.PY</text>
+<text x="260.0" y="2376.1" text-anchor="middle" fill="#AEB8CC" font-size="15" font-weight="800" letter-spacing="2">LINKS · FRONTMATTER · PRIVACY</text>
+</g>
+<g opacity="1"><polygon points="84,2420 450,2420 450,2486 436,2500 70,2500 70,2434" fill="#0A0F1A" stroke="#39FF88" stroke-width="2.5"  filter="url(#g)"/>
+<text x="260.0" y="2468.4" text-anchor="middle" fill="#39FF88" font-size="26" font-weight="800" letter-spacing="2">48 UNIT TESTS</text>
+</g>
+<g opacity="1"><polygon points="84,2520 450,2520 450,2586 436,2600 70,2600 70,2534" fill="#0A0F1A" stroke="#39FF88" stroke-width="2.5"  filter="url(#g)"/>
+<text x="260.0" y="2567.8" text-anchor="middle" fill="#39FF88" font-size="24" font-weight="800" letter-spacing="2">CI · PYTHON 3.9–3.12</text>
+</g>
+<polygon points="546,2230 1040,2230 1040,2604 1014,2630 520,2630 520,2256" fill="#071019" fill-opacity=".85" stroke="url(#h3)" stroke-width="3" filter="url(#g)"/>
+<text x="780.0" y="2285" text-anchor="middle" fill="#A86BFF" font-size="32" font-weight="800" letter-spacing="4">RUNS IN</text>
+<g opacity="1"><polygon points="564,2300 1010,2300 1010,2356 996,2370 550,2370 550,2314" fill="#0A0F1A" stroke="#A86BFF" stroke-width="2.5"  filter="url(#g)"/>
+<text x="780.0" y="2332.2" text-anchor="middle" fill="#D6DEEC" font-size="22" font-weight="800" letter-spacing="2">CLAUDE CODE</text>
+<text x="780.0" y="2353.9" text-anchor="middle" fill="#AEB8CC" font-size="16" font-weight="800" letter-spacing="2">/skill-name</text>
+</g>
+<g opacity="1"><polygon points="564,2380 1010,2380 1010,2436 996,2450 550,2450 550,2394" fill="#0A0F1A" stroke="#A86BFF" stroke-width="2.5"  filter="url(#g)"/>
+<text x="780.0" y="2412.2" text-anchor="middle" fill="#D6DEEC" font-size="22" font-weight="800" letter-spacing="2">CODEX</text>
+<text x="780.0" y="2433.9" text-anchor="middle" fill="#AEB8CC" font-size="16" font-weight="800" letter-spacing="2">$skill-name</text>
+</g>
+<g opacity="1"><polygon points="564,2460 1010,2460 1010,2516 996,2530 550,2530 550,2474" fill="#0A0F1A" stroke="#A86BFF" stroke-width="2.5"  filter="url(#g)"/>
+<text x="780.0" y="2492.2" text-anchor="middle" fill="#D6DEEC" font-size="22" font-weight="800" letter-spacing="2">HERMES</text>
+<text x="780.0" y="2513.9" text-anchor="middle" fill="#AEB8CC" font-size="16" font-weight="800" letter-spacing="2">SESSION / USER</text>
+</g>
+<g opacity="1"><polygon points="564,2540 1010,2540 1010,2596 996,2610 550,2610 550,2554" fill="#0A0F1A" stroke="#A86BFF" stroke-width="2.5"  filter="url(#g)"/>
+<text x="780.0" y="2572.2" text-anchor="middle" fill="#D6DEEC" font-size="22" font-weight="800" letter-spacing="2">ANY MD AGENT</text>
+<text x="780.0" y="2593.9" text-anchor="middle" fill="#AEB8CC" font-size="16" font-weight="800" letter-spacing="2">PASTE SKILL.MD</text>
+</g>
+<text x="540" y="2700" text-anchor="middle" fill="#7C88A0" font-size="26" font-weight="800" letter-spacing="2" letter-spacing="5">CRITIQUE FIRST · BUILD WHAT YOU CHOSE</text><rect width="1080" height="2780" fill="url(#scan)"/></svg>
