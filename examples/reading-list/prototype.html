@@ -287,7 +287,7 @@ function openDetail(id) {
   $("d-title").textContent = i.title;
   $("d-source").textContent = i.source;
   $("d-type").textContent = i.type;
-  $("d-added").textContent = new Date(i.added).toLocaleDateString("en-GB", {day: "numeric", month: "long", year: "numeric"});
+  $("d-added").textContent = new Date(i.added).toLocaleDateString("en-GB", {day: "numeric", month: "long", year: "numeric", timeZone: "UTC"});
   $("d-minutes").textContent = i.minutes + " min";
   document.querySelectorAll('[name="d-status"]').forEach(r => { r.checked = r.value === i.status; });
   $("d-read").disabled = i.status === "done";

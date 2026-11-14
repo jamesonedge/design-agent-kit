@@ -159,6 +159,18 @@ class ValidateTests(unittest.TestCase):
             json.dump(manifest, fh)
         self.assert_error("not a safe lowercase-hyphenated token")
 
+    def test_broken_markdown_image_link(self):
+        self.append("README.md", "\n![alt](docs/images/missing.png)\n")
+        self.assert_error("broken link docs/images/missing.png")
+
+    def test_broken_html_img_in_markdown(self):
+        self.append("README.md", '\n<img src="docs/images/missing-html.png">\n')
+        self.assert_error("broken link docs/images/missing-html.png")
+
+    def test_remote_resource_in_svg(self):
+        self.append("docs/images/kit-overview.svg", '\n<image href="https://cdn.example/x.png"/>\n')
+        self.assert_error("remote resource")
+
 
 if __name__ == "__main__":
     unittest.main()

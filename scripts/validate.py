@@ -25,16 +25,17 @@ DEFAULT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Paths never published (kept in .gitignore) and therefore not scanned.
 IGNORED_GLOBS = ("*.private.md", ".agent-handoffs", "__pycache__", "*.pyc", ".git",
-                 "receipts", "evidence", ".local", "*.receipt.json")
+                 "receipts", "evidence", ".local", "*.receipt.json", "runs")
 REQUIRED_GITIGNORE = ("BUILD-CONTRACT.private.md", "BUILD-REPORT.private.md", ".agent-handoffs/")
 SKILL_ALLOWED_EXT = (".md", ".html")
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
-MD_LINK_RE = re.compile(r"(?<!!)\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
+MD_LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 HTML_REF_RE = re.compile(r"""(?:href|src)\s*=\s*["']([^"']+)["']""", re.I)
 REMOTE_RESOURCE_RES = (
     re.compile(r"""<script[^>]+src\s*=\s*["'](?:https?:)?//""", re.I),
     re.compile(r"""<link[^>]+href\s*=\s*["'](?:https?:)?//""", re.I),
     re.compile(r"""<img[^>]+src\s*=\s*["'](?:https?:)?//""", re.I),
+    re.compile(r"""<image[^>]+(?:xlink:)?href\s*=\s*["'](?:https?:)?//""", re.I),
     re.compile(r"""@import\s+(?:url\()?["']?(?:https?:)?//""", re.I),
     re.compile(r"""url\(\s*["']?(?:https?:)?//""", re.I),
 )
@@ -147,7 +148,8 @@ def strip_code(text):
 
 def check_links(root, rel, text, errors):
     if rel.endswith(".md"):
-        targets = MD_LINK_RE.findall(strip_code(text))
+        stripped = strip_code(text)
+        targets = MD_LINK_RE.findall(stripped) + HTML_REF_RE.findall(stripped)
     else:
         targets = HTML_REF_RE.findall(text)
     base = os.path.dirname(os.path.join(root, rel))
@@ -296,9 +298,9 @@ def validate(root):
             continue
         # HTML templates link to placeholder files the user will create.
         is_html_template = rel.endswith(".html") and "/templates/" in rel
-        if rel.endswith((".md", ".html")) and not is_html_template:
+        if rel.endswith((".md", ".html", ".svg")) and not is_html_template:
             check_links(root, rel, text, errors)
-        if rel.endswith(".html"):
+        if rel.endswith((".html", ".svg")):
             for regex in REMOTE_RESOURCE_RES:
                 if regex.search(text):
                     errors.append("%s: remote resource reference (must be self-contained)" % rel)

@@ -21,7 +21,7 @@ Proves the kit still works end to end on a fixed target. Run after any edit to e
 Fail on any miss:
 - Review has every section A–H, each citing something specific on the reading-list screen, not generic advice.
 - Review ends with a Cut / Add / Revise / Keep ledger with at least one row in each column.
-- The review catches every major issue the baseline lists in `expected-findings.md`.
+- The review catches every major issue the baseline lists in [expected-findings.md](../baselines/reading-list/expected-findings.md).
 - Mockup produced 2–3 directions that differ in structure, not just colour, plus a comparison page.
 - Prototype is one HTML file that opens with the network off and has no external requests.
 - Prototype matches direction B, and the graft ledger lists every change.

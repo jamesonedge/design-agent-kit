@@ -23,6 +23,7 @@ import sys
 KIT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AGENTS = ("claude", "codex", "hermes", "generic")
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
+OS_ROOT_SYMLINKS = ("/tmp", "/var", "/etc") if sys.platform == "darwin" else ()
 
 EXIT_IO = 1
 EXIT_REFUSED = 3
@@ -75,12 +76,17 @@ def safe_relpath(rel):
 
 def check_manifest_skill(skill):
     """Refuse unsafe manifest entries before any file outside the kit is opened."""
+    if not isinstance(skill, dict):
+        raise Refusal("manifest skill entry must be an object")
     name = skill.get("name")
     if not isinstance(name, str) or not NAME_RE.match(name) or len(name) > 64:
         raise Refusal("manifest skill name is not a safe token: %r" % (name,))
     if skill.get("path") != "skills/" + name:
         raise Refusal("manifest path for %s must be skills/%s" % (name, name))
-    for rel in skill.get("files", []):
+    files = skill.get("files")
+    if not isinstance(files, list) or not files:
+        raise Refusal("manifest files for %s must be a non-empty list" % name)
+    for rel in files:
         if not safe_relpath(rel):
             raise Refusal("manifest file path escapes the skill folder: %r" % (rel,))
 
@@ -89,7 +95,7 @@ def check_source(kit_root, name):
     """Return kit_root/skills/<name>, refusing symlinks at or below the kit root."""
     skills_dir = os.path.join(kit_root, "skills")
     source = os.path.join(skills_dir, name)
-    for path in (skills_dir, source):
+    for path in (kit_root, skills_dir, source):
         if os.path.islink(path):
             raise Refusal("symlink in source path not allowed: %s" % path)
     if not os.path.isdir(source):
@@ -97,11 +103,11 @@ def check_source(kit_root, name):
     return source
 
 
-def check_no_symlink_ancestors(path):
+def check_no_symlink_ancestors(path, os_root_symlinks=OS_ROOT_SYMLINKS):
     """Refuse if the path or any existing ancestor is a symlink."""
     current = os.path.abspath(path)
     while True:
-        if os.path.islink(current):
+        if os.path.islink(current) and current not in os_root_symlinks:
             raise Refusal("symlink in destination path not allowed: %s" % current)
         parent = os.path.dirname(current)
         if parent == current:
@@ -163,7 +169,11 @@ def resolve_destination(args, parser, environ):
 
 def plan(kit_root, manifest, skills, dest_root):
     """Preflight every skill. Returns a list of plan entries or raises Refusal."""
-    for skill in manifest.get("skills", []):
+    if not isinstance(manifest, dict) or not isinstance(manifest.get("skills"), list):
+        raise Refusal("manifest.json must contain a 'skills' list")
+    if not isinstance(manifest.get("name"), str) or not isinstance(manifest.get("version"), str):
+        raise Refusal("manifest.json must contain string 'name' and 'version'")
+    for skill in manifest["skills"]:
         check_manifest_skill(skill)
     known = {s["name"]: s for s in manifest["skills"]}
     check_no_symlink_ancestors(dest_root)
@@ -254,7 +264,11 @@ def main(argv=None, environ=None, kit_root=KIT_ROOT):
 
     try:
         dest_root = resolve_destination(args, parser, environ)
-        skills = args.skills or [s.get("name") for s in manifest.get("skills", [])]
+        raw_skills = manifest.get("skills") if isinstance(manifest, dict) else None
+        skills = args.skills or [
+            s.get("name") for s in (raw_skills if isinstance(raw_skills, list) else [])
+            if isinstance(s, dict)
+        ]
         skills = list(dict.fromkeys(skills))
         entries = plan(kit_root, manifest, skills, dest_root)
     except Refusal as exc:
