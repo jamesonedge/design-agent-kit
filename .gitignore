@@ -20,3 +20,4 @@ __pycache__/
 *.tar.gz
 *.tgz
 .DS_Store
+tests/runs/

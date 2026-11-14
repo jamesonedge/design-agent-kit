@@ -359,6 +359,49 @@ class SymlinkAndEscapeTests(TempCase):
         self.assertIn("does not match manifest", err)
         self.assertFalse(os.path.exists(dest))
 
+    def test_symlinked_kit_root_refused(self):
+        kit = self.fake_kit()
+        link = os.path.join(self.tmp, "kit-link")
+        os.symlink(kit, link)
+        dest = os.path.join(self.tmp, "d")
+        code, _, err = run(["--agent", "generic", "--dest", dest], kit_root=link)
+        self.assertEqual(code, install.EXIT_REFUSED)
+        self.assertIn("symlink", err)
+        self.assertFalse(os.path.exists(dest))
+
+    def test_malformed_manifest_structure_refused(self):
+        cases = [
+            {},
+            {"name": "x", "version": "0.1.0", "skills": "not-a-list"},
+            {"name": "x", "version": "0.1.0", "skills": ["not-a-dict"]},
+            {"name": "x", "version": "0.1.0",
+             "skills": [{"name": "senior-design-review", "path": "skills/senior-design-review",
+                         "files": "SKILL.md"}]},
+            {"name": "x", "version": "0.1.0",
+             "skills": [{"name": "senior-design-review", "path": "skills/senior-design-review"}]},
+        ]
+        for idx, manifest in enumerate(cases):
+            with self.subTest(case=idx):
+                kit = self.fake_kit()
+                self.write_manifest(kit, manifest)
+                dest = os.path.join(self.tmp, "d")
+                code, _, err = run(["--agent", "generic", "--dest", dest], kit_root=kit)
+                self.assertEqual(code, install.EXIT_REFUSED, err)
+                self.assertIn("manifest", err)
+                self.assertFalse(os.path.exists(dest))
+                shutil.rmtree(kit)
+
+    def test_os_root_symlinks_exempt_when_configured(self):
+        real = self.mkdir("real-root")
+        link = os.path.join(self.tmp, "root-link")
+        os.symlink(real, link)
+        install.check_no_symlink_ancestors(os.path.join(link, "sub"), os_root_symlinks=(link,))
+        child_real = self.mkdir("child-real")
+        child_link = os.path.join(link, "child-link")
+        os.symlink(child_real, child_link)
+        with self.assertRaises(install.Refusal):
+            install.check_no_symlink_ancestors(os.path.join(child_link, "sub"), os_root_symlinks=(link,))
+
 
 if __name__ == "__main__":
     unittest.main()
